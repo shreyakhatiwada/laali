@@ -4,6 +4,8 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include <QSqlQuery>
+#include <QDate>
+#include <QDateEdit>
 #include <QMessageBox>
 
 login::login(QWidget *parent)
@@ -19,8 +21,9 @@ login::~login()
     delete ui;
 }
 
+QString username;
 
-QString login::on_logbut_clicked()
+int login::on_logbut_clicked()
 {
 
     if (!mydb.open()){
@@ -30,7 +33,7 @@ QString login::on_logbut_clicked()
 
     }
 
-    QString username = ui->username->text();
+    username = ui->username->text();
     QString password = ui->password->text();
     QSqlQuery qry;
 
@@ -38,10 +41,17 @@ QString login::on_logbut_clicked()
         int count=0;
         while(qry.next()){
             count++;
+            QString a = qry.value(0).toString();
+            id2 = a.toInt();
+            qDebug()<< id2;
+
         }
         if (count==1){
             qDebug()<< "Successful login";
+
             qry.clear();
+
+
             mydb.close();
 
             ui->stackedWidget->setCurrentIndex(2);
@@ -53,69 +63,82 @@ QString login::on_logbut_clicked()
             mydb.close();
         } else if(count>1){
             qDebug() << "Bad";
+            qry.clear();
+            mydb.close();
         } else {
             qDebug()<< "Uhm ok";
+            qry.clear();
+            mydb.close();
         }
-
+         return id2;
     }
-return username;
-//return username;
+
+
 }
+
 
 
 void login::on_pushButton_clicked()
 {
- //s = new sign(this);
- //s->show();
- ui->stackedWidget->setCurrentIndex(1);
+
+    //s = new sign(this);
+    //s->show();
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 
-QString login::on_signbut_clicked()
+int login::on_signbut_clicked()
 {
+    QString uId = ui->user_id->text();
+    id = uId.toInt();
+    QString ue = ui->uname->text();
+    QString password = ui->pass->text();
+    QString fullname = ui->fulln->text();
+    QDate dateOfBirth = ui->dob->date();
+    QString s = dateOfBirth.toString("yyyy-MM-dd");
+    qDebug()<<s;
 
-        username = ui->uname->text();
-         password = ui->pass->text();
-         fullname = ui->fulln->text();
-         QDate dateOfBirth = ui->dob->date();
-        QString s = dateOfBirth.toString("yyyy-MM-dd");
-        qDebug()<<s;
+    mydb = QSqlDatabase::database();
 
-         mydb = QSqlDatabase::database();
-
-        if(!mydb.open()){
-            qDebug()<<"Not connected";
-        }
-        else{
-            qDebug()<<"connected";
-
+    if(!mydb.open()){
+        qDebug()<<"Not connected";
+    }
+    else{
+        qDebug()<<"connected";
+        qDebug()<<id;
         QSqlQuery query;
-        query.prepare("INSERT INTO User(username,password,fullname,DOB) VALUES (:username,:password,:fullname,:DOB)");
+        query.prepare("INSERT INTO User(user_id,username,password,fullname,DOB) VALUES (:u,:username,:password,:fullname,:DOB)");
 
-
-        query.bindValue(":username",username);
+        query.bindValue(":u",id);
+        query.bindValue(":username",ue);
         query.bindValue(":password",password);
         query.bindValue(":fullname",fullname);
         query.bindValue(":DOB",s);
 
         if (!query.exec()){
-            QMessageBox msgBox;
-            msgBox.setText("Username taken.");
-            msgBox.exec();
+            qDebug()<<"Not ok";
             ui->uname->clear();
              ui->pass->clear();
              ui->fulln->clear();
-         qDebug()<< "notOk";
+              query.clear();
+               mydb.close();
+
 }else{
              qDebug()<< "Ok";
             ui->stackedWidget->setCurrentIndex(5);
-        } query.clear();
+              query.clear();
+               mydb.close();
+        }
+
+
+
 
 }
 
-mydb.close();
-return username;
+return id;
 }
+
+
 
 void login::on_pushButton_2_clicked()
 {
@@ -149,7 +172,11 @@ void login::on_pushButton_7_clicked()
 
 
 void login::on_questionbut_clicked()
-{
+{/*
+    QString periodid = ui->userN->text();
+    int periodID = periodid.toInt();
+    qDebug()<<periodID;*/
+
     QDate last = ui->lastPeriod->date();
     QString lp = last.toString("yyyy-MM-dd");
     qDebug()<<lp;
@@ -172,9 +199,9 @@ else{
 
 }
     QSqlQuery query;
-    query.prepare("INSERT INTO periodData(lastPeriod,cycleLength,periodLength) VALUES (:lastPeriod,:cycleLength,:periodLength)");
+    query.prepare("INSERT INTO periodData(period_Id,lastPeriod,cycleLength,periodLength) VALUES (:p,:lastPeriod,:cycleLength,:periodLength)");
 
-
+    query.bindValue(":p",id);
     query.bindValue(":lastPeriod",lp);
     query.bindValue(":cycleLength",cycleLength);
     query.bindValue(":periodLength",periodLength);
@@ -182,9 +209,10 @@ else{
     if (query.exec()){
      qDebug()<< "Okayyyyy";
      //hide();
-      ui->stackedWidget->setCurrentIndex(2);
-
+      ui->stackedWidget->setCurrentIndex(0);
+    query.clear();
 }
+
 mydb.close();
 
 
@@ -238,14 +266,22 @@ void login::on_pushButton_14_clicked()
 
 void login::on_log_period_2_clicked()
 {
-     ui->stackedWidget->setCurrentIndex(2);
-    {
+     ui->stackedWidget->setCurrentIndex(3);
+
+}
+
+
+void login::on_logPeriodbut_clicked()
+{
+
+    ui->stackedWidget->setCurrentIndex(2);
+
         mydb = QSqlDatabase::database();
      if(!mydb.open()){
         qDebug()<<"Not connected";
      }
 
-        QDate lastp = ui->logdate->date();
+        QDate lastp = ui->logPeriodbut_2->date();
         QDate x=lastp.addDays(28);
        // QDate x=lastp.addDays(cycleLength);
 
@@ -255,12 +291,9 @@ void login::on_log_period_2_clicked()
         ui->prediction->setText(x.toString());
         ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining"));
 
-    }
-}
 
 
-void login::on_logPeriodbut_clicked()
-{
+
       QDate logperiod = ui->logPeriodbut_2->date();
       QString g = logperiod.toString("yyyy-MM-dd");
 
@@ -269,37 +302,24 @@ void login::on_logPeriodbut_clicked()
       mydb = QSqlDatabase::database();
    if(!mydb.open()){
       qDebug()<<"Not connected";}
+   QSqlQuery qre;
 
-   QSqlQuery qr;
-   if(qr.exec("select * from User where username = '"+username+"' ")){
-      int b=0;
-       while(qr.next()){
-           b++;
-       }
-       if (b==1){
-           qr.prepare("SELECT lastPeriod FROM periodData ");
-               if(qr.prepare("UPDATE periodData SET lastPeriod = :a ")){
-                   qr.bindValue(":a", g);
-                   qr.clear();
-
-                         if (qr.exec())
-                           qDebug() << "Woohoo!";
-                         else
+    qDebug()<< id2;
+   qre.prepare("UPDATE periodData SET lastPeriod = :a WHERE period_Id = :asd ");
+   qre.bindValue(":asd",id2);
+   qre.bindValue(":a", g);
+               if(qre.exec()){
+                   qDebug()<< "Done";
+                   qre.clear();
+}
+                         else{
                            qDebug() << "Update failed";
+               qre.clear();
                        }
-                       else
-                         qDebug() << "Your SQL is broken";
-          }
-       else if (b<1 ) {
-           qDebug() << "bhayena";}
-       else if(b>1){qDebug()<<"no";}
-       else {qDebug()<<"la herum";}
-
-
-
 
    mydb.close();
-}
+
+
 }
 //   if(qr.prepare("UPDATE periodData SET lastPeriod = :a")){
 //       qr.bindValue(":a", g);
@@ -313,4 +333,52 @@ void login::on_logPeriodbut_clicked()
 
 
 //};
+
+
+void login::on_pred_clicked()
+
+    {
+
+        mydb = QSqlDatabase::database();
+        if(!mydb.open()){
+        qDebug()<<"Not connected";
+        }
+             QSqlQuery qrr;
+            qDebug()<<id2;
+
+
+             if(qrr.exec("SELECT lastPeriod FROM periodData WHERE period_Id = :dd ")){
+             qrr.bindValue(":dd",id2);
+                qDebug()<<"noprob";
+            while(qrr.next()){
+             QString n = qrr.value(0).toString();
+             qDebug()<<n;}}
+//             //QDate next = n.toDate();
+             //QDate nextP = QDate::fromString(n);
+//             //QDate next = n.to();
+ qrr.clear();
+
+}
+//             //int cycle = qrr.value(2).toInt();
+//            // qDebug()<<cycle;
+
+
+
+
+
+
+        //QDate lastp = ui->logPeriodbut_2->date();
+//        QDate x=nextP.addDays(cycle);
+
+
+//        QDate curr = QDate::currentDate();
+//        int minus= curr.daysTo(x);
+
+//        ui->prediction->setText(x.toString());
+//        ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining"));
+
+
+
+
+
 

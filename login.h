@@ -25,6 +25,7 @@ public:
     ~login();
 
     QString username,password,fullname;
+    int id,id2;
 
 
 public slots:
@@ -34,11 +35,11 @@ public slots:
 
     };
 private slots:
-    QString on_logbut_clicked();
+    int on_logbut_clicked();
 
     void on_pushButton_clicked();
 
-    QString on_signbut_clicked();
+    int on_signbut_clicked();
 
     void on_pushButton_2_clicked();
 
@@ -71,6 +72,8 @@ private slots:
     void on_log_period_2_clicked();
 
     void on_logPeriodbut_clicked();
+
+    void on_pred_clicked();
 
 private:
     Ui::login *ui;

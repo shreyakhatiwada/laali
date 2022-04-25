@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1302</width>
-    <height>693</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,85 +19,80 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1301</width>
-      <height>641</height>
+      <width>1920</width>
+      <height>1080</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="login_screen0">
-     <widget class="QWidget" name="layoutWidget">
+     <property name="styleSheet">
+      <string notr="true">background-image: url(&quot;LOGIN.png&quot;);</string>
+     </property>
+     <widget class="QLineEdit" name="username">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>250</y>
-        <width>241</width>
-        <height>211</height>
+        <x>1350</x>
+        <y>380</y>
+        <width>431</width>
+        <height>91</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Username</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="username"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Password</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="password"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QPushButton" name="logbut">
-         <property name="text">
-          <string>login</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="styleSheet">
-          <string notr="true">border:1px solid transparent;</string>
-         </property>
-         <property name="text">
-          <string>Sign up here</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <property name="styleSheet">
+       <string notr="true">opacity: 0;</string>
+      </property>
      </widget>
-     <widget class="QLabel" name="textdis">
+     <widget class="QLineEdit" name="password">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>180</y>
-        <width>211</width>
-        <height>16</height>
+        <x>1346</x>
+        <y>580</y>
+        <width>431</width>
+        <height>91</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="logbut">
+      <property name="geometry">
+       <rect>
+        <x>1478</x>
+        <y>709</y>
+        <width>171</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>35</pointsize>
+       </font>
       </property>
       <property name="text">
-       <string/>
+       <string>Login</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>1450</x>
+        <y>860</y>
+        <width>231</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>35</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:1px solid transparent;</string>
+      </property>
+      <property name="text">
+       <string>Sign up here</string>
       </property>
      </widget>
     </widget>

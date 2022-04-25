@@ -2,8 +2,6 @@
 #include "ui_questions.h"
 #include <QDate>
 #include <QString>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 
 questions::questions(QWidget *parent) :
     QDialog(parent),
@@ -32,29 +30,6 @@ void questions::on_questionbut_clicked()
     QString periodL = ui->periodLength->text();
     int periodLength = periodL.toInt();
     qDebug()<<periodLength;
-
-    mydb = QSqlDatabase::database();
-
-if(!mydb.open()){
-    qDebug()<<"Not connected";
-}
-else{
-    qDebug()<<"connected";
-
-}
-    QSqlQuery query;
-    query.prepare("INSERT INTO periodData(lastPeriod,cycleLength,periodLength) VALUES (:lastPeriod,:cycleLength,:periodLength)");
-    qDebug()<< "yes";
-
-    query.bindValue(":lastPeriod",lp);
-    query.bindValue(":cycleLength",cycleLength);
-    query.bindValue(":periodLength",periodLength);
-
-    if (query.exec()){
-    // count++;
-     qDebug()<< "Okayyyyy";
-     //hide();
-}
 
 
 

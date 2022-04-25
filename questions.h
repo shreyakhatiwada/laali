@@ -1,6 +1,6 @@
 #ifndef QUESTIONS_H
 #define QUESTIONS_H
-#include <QSqlDatabase>
+
 #include <QDialog>
 
 namespace Ui {
@@ -14,7 +14,7 @@ class questions : public QDialog
 public:
     explicit questions(QWidget *parent = nullptr);
     ~questions();
-    QSqlDatabase mydb;
+
 private slots:
 
     void on_questionbut_clicked();

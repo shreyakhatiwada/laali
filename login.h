@@ -23,11 +23,6 @@ public:
     QSqlDatabase mydb;
     login(QWidget *parent = nullptr);
     ~login();
-
-    QString username,password,fullname;
-    int id,id2;
-
-
 public slots:
     void data(){
         mydb = QSqlDatabase::addDatabase("QSQLITE");
@@ -35,11 +30,11 @@ public slots:
 
     };
 private slots:
-    int on_logbut_clicked();
+    void on_logbut_clicked();
 
     void on_pushButton_clicked();
 
-    int on_signbut_clicked();
+    void on_signbut_clicked();
 
     void on_pushButton_2_clicked();
 
@@ -62,18 +57,6 @@ private slots:
     void on_pushButton_10_clicked();
 
     void on_pushButton_9_clicked();
-
-    void on_pushButton_15_clicked();
-
-    void on_pushButton_14_clicked();
-
-   // void on_signup_screen1_customContextMenuRequested(const QPoint &pos);
-
-    void on_log_period_2_clicked();
-
-    void on_logPeriodbut_clicked();
-
-    void on_pred_clicked();
 
 private:
     Ui::login *ui;

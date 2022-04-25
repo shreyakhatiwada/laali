@@ -16,11 +16,11 @@ public:
     explicit sign(QWidget *parent = nullptr);
     ~sign();
     QSqlDatabase mydb;
-    //QString username,password,fullname;
+    QString username,password,fullname;
 
 
 private slots:
-   // void on_signbut_clicked();
+    void on_signbut_clicked();
 
 private:
     Ui::sign *ui;

@@ -19,38 +19,38 @@ sign::~sign()
 }
 
 
-//void sign::on_signbut_clicked()
-//{
-//    username = ui->uname->text();
-//     password = ui->pass->text();
-//     fullname = ui->fulln->text();
-//     QDate dateOfBirth = ui->dob->date();
-//    QString s = dateOfBirth.toString("yyyy-MM-dd");
-//    qDebug()<<s;
+void sign::on_signbut_clicked()
+{
+    username = ui->uname->text();
+     password = ui->pass->text();
+     fullname = ui->fulln->text();
+     QDate dateOfBirth = ui->dob->date();
+    QString s = dateOfBirth.toString("yyyy-MM-dd");
+    qDebug()<<s;    
 
-//        mydb = QSqlDatabase::database();
+        mydb = QSqlDatabase::database();
 
-//    if(!mydb.open()){
-//        qDebug()<<"Not connected";
-//    }
-//    else{
-//        qDebug()<<"connected";
+    if(!mydb.open()){
+        qDebug()<<"Not connected";
+    }
+    else{
+        qDebug()<<"connected";
 
-//    QSqlQuery query;
-//    query.prepare("INSERT INTO User(username,password,fullname,DOB) VALUES (:username,:password,:fullname,:DOB)");
-//    qDebug()<< "yes";
+    QSqlQuery query;
+    query.prepare("INSERT INTO User(username,password,fullname,DOB) VALUES (:username,:password,:fullname,:DOB)");
+    qDebug()<< "yes";
 
-//    query.bindValue(":username",username);
-//    query.bindValue(":password",password);
-//    query.bindValue(":fullname",fullname);
-//    query.bindValue(":DOB",s);
+    query.bindValue(":username",username);
+    query.bindValue(":password",password);
+    query.bindValue(":fullname",fullname);
+    query.bindValue(":DOB",s);
 
-//    if (query.exec()){
-//    // count++;
-//     qDebug()<< "Ok";
-//     hide();
+    if (query.exec()){
+    // count++;
+     qDebug()<< "Ok";
+     hide();
 
 
-//}
-//}
-//}
+}
+}
+}

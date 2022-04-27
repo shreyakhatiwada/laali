@@ -24,9 +24,9 @@ public:
     login(QWidget *parent = nullptr);
     ~login();
 
-    QString username,password,fullname;
-    int id,id2;
-
+    QString username,password,fullname,now;
+    int id,id2,cycle,minus;
+    QDate x;
 
 public slots:
     void data(){

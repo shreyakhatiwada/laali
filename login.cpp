@@ -1,3 +1,4 @@
+
 #include "login.h"
 #include "ui_login.h"
 #include <QSql>
@@ -280,42 +281,55 @@ void login::on_logPeriodbut_clicked()
      if(!mydb.open()){
         qDebug()<<"Not connected";
      }
+     QSqlQuery q1;
 
-        QDate lastp = ui->logPeriodbut_2->date();
-        QDate x=lastp.addDays(28);
-       // QDate x=lastp.addDays(cycleLength);
+     QDate logperiod = ui->logPeriodbut_2->date();
+     QString g = logperiod.toString("yyyy-MM-dd");
+
+     qDebug()<< id2;
+    q1.prepare("UPDATE periodData SET lastPeriod = :a WHERE period_Id = :asd ");
+    q1.bindValue(":asd",id2);
+    q1.bindValue(":a", g);
+                if(q1.exec()){
+                    qDebug()<< "Done";
+                    q1.clear();
+ }
+                          else{
+                            qDebug() << "Update failed";
+                q1.clear();
+                        }
+
+
+       QString od = QString::number(id2);
+     if(q1.exec("SELECT * FROM periodData WHERE period_Id = '"+od+"' ")){
+        qDebug()<<"noprob";
+        int fieldNo = q1.record().indexOf("lastPeriod");
+        int fieldNo1 = q1.record().indexOf("cycleLength");
+
+    while(q1.next()){
+      now = q1.value(fieldNo).toString();
+     qDebug()<<now;
+      cycle = q1.value(fieldNo1).toInt();
+     qDebug()<<cycle;
+     QDate nextP = QDate::fromString(now,"yyyy-MM-dd");
+       qDebug()<<nextP;
+       x=nextP.addDays(cycle);
 
         QDate curr = QDate::currentDate();
-        int minus= curr.daysTo(x);
-
-        ui->prediction->setText(x.toString());
-        ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining"));
-
+          minus= curr.daysTo(x);
+     }
+          }
 
 
-
-      QDate logperiod = ui->logPeriodbut_2->date();
-      QString g = logperiod.toString("yyyy-MM-dd");
+                       ui->prediction->setText(x.toString());
+                       ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining"));
 
 
 
-      mydb = QSqlDatabase::database();
-   if(!mydb.open()){
-      qDebug()<<"Not connected";}
-   QSqlQuery qre;
 
-    qDebug()<< id2;
-   qre.prepare("UPDATE periodData SET lastPeriod = :a WHERE period_Id = :asd ");
-   qre.bindValue(":asd",id2);
-   qre.bindValue(":a", g);
-               if(qre.exec()){
-                   qDebug()<< "Done";
-                   qre.clear();
-}
-                         else{
-                           qDebug() << "Update failed";
-               qre.clear();
-                       }
+
+
+
 
    mydb.close();
 
@@ -338,44 +352,56 @@ void login::on_logPeriodbut_clicked()
 void login::on_pred_clicked()
 
     {
-
         mydb = QSqlDatabase::database();
         if(!mydb.open()){
         qDebug()<<"Not connected";
         }
              QSqlQuery qrr;
+
             qDebug()<<id2;
-
-
-             if(qrr.exec("SELECT lastPeriod FROM periodData WHERE period_Id = :dd ")){
-             qrr.bindValue(":dd",id2);
+            QString od = QString::number(id2);
+             if(qrr.exec("SELECT * FROM periodData WHERE period_Id = '"+od+"' ")){
                 qDebug()<<"noprob";
+                int fieldNo = qrr.record().indexOf("lastPeriod");
+                int fieldNo1 = qrr.record().indexOf("cycleLength");
+
             while(qrr.next()){
-             QString n = qrr.value(0).toString();
-             qDebug()<<n;}}
-//             //QDate next = n.toDate();
-             //QDate nextP = QDate::fromString(n);
-//             //QDate next = n.to();
- qrr.clear();
+              now = qrr.value(fieldNo).toString();
+             qDebug()<<now;
+              cycle = qrr.value(fieldNo1).toInt();
+             qDebug()<<cycle;
+             QDate nextP = QDate::fromString(now,"yyyy-MM-dd");
+               qDebug()<<nextP;
+               x=nextP.addDays(cycle);
+
+                QDate curr = QDate::currentDate();
+                  minus= curr.daysTo(x);
+             }
+                  }
+
+
+                               ui->prediction->setText(x.toString());
+                               ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining"));
+                 QString pd = x.toString("yyyy-MM-dd");
+
+                 qrr.prepare("INSERT INTO periodData(periodDate) VALUES (:pp) WHERE period_Id = '"+od+"'");
+                qrr.bindValue(":pp",pd);
+
+               qrr.clear();
 
 }
-//             //int cycle = qrr.value(2).toInt();
-//            // qDebug()<<cycle;
-
 
 
 
 
 
         //QDate lastp = ui->logPeriodbut_2->date();
-//        QDate x=nextP.addDays(cycle);
+//
 
 
-//        QDate curr = QDate::currentDate();
-//        int minus= curr.daysTo(x);
+//
+//
 
-//        ui->prediction->setText(x.toString());
-//        ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining"));
 
 
 

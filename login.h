@@ -3,11 +3,10 @@
 #include <QMainWindow>
 #include <QSql>
 #include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QDebug>
 #include <QFileInfo>
-#include "todaypage.h"
-#include "sign.h"
-#include "questions.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class login; }
 QT_END_NAMESPACE
@@ -17,16 +16,14 @@ class login : public QMainWindow
     Q_OBJECT
 
 public:
-    todaypage *t;
-    sign *s;
 
     QSqlDatabase mydb;
     login(QWidget *parent = nullptr);
     ~login();
 
     QString username,password,fullname,now;
-    int id,id2,cycle,minus;
-    QDate x;
+    int id,cycle,minus;
+    QDate x,nextOvu;
 
 public slots:
     void data(){
@@ -37,19 +34,8 @@ public slots:
 private slots:
     int on_logbut_clicked();
 
-    void on_pushButton_clicked();
 
     int on_signbut_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_3_clicked();
-
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_6_clicked();
-
-    void on_pushButton_7_clicked();
 
     void on_questionbut_clicked();
 
@@ -67,13 +53,19 @@ private slots:
 
     void on_pushButton_14_clicked();
 
-   // void on_signup_screen1_customContextMenuRequested(const QPoint &pos);
 
     void on_log_period_2_clicked();
 
     void on_logPeriodbut_clicked();
 
     void on_pred_clicked();
+
+
+    void on_insightbut_clicked();
+
+    void on_signupbut_clicked();
+
+    void on_existingaccount_clicked();
 
 private:
     Ui::login *ui;

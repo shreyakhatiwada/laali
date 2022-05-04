@@ -15,6 +15,20 @@ login::login(QWidget *parent)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+    QPixmap dash ("D:/COMP116/code/laali-main/laali-main/DASHBORAD.jpg");
+    ui->dashimg->setPixmap(dash.scaled(1260,670,Qt::KeepAspectRatio));
+    QPixmap login ("D:/COMP116/code/laali-main/laali-main/LOGIN.jpg");
+    ui->label_4->setPixmap(login.scaled(1260,670,Qt::KeepAspectRatio));
+    QPixmap signup ("D:/COMP116/code/laali-main/laali-main/Sign up.jpg");
+    ui->UPIMG->setPixmap(signup.scaled(1260,670,Qt::KeepAspectRatio));
+    QPixmap logp ("D:/COMP116/code/laali-main/laali-main/LOG PERIOD.jpg");
+    ui->lgpimg->setPixmap(logp.scaled(1260,670,Qt::KeepAspectRatio));
+    QPixmap qs ("D:/COMP116/code/laali-main/laali-main/QUESTIONS.jpg");
+    ui->quesimg->setPixmap(qs.scaled(1260,670,Qt::KeepAspectRatio));
+    QPixmap ins ("D:/COMP116/code/laali-main/laali-main/INSIGHTS.jpg");
+    ui->insimg->setPixmap(ins.scaled(1260,670,Qt::KeepAspectRatio));
+    QPixmap welc ("D:/COMP116/code/laali-main/laali-main/WELCOME.jpg");
+    ui->welcomeimg->setPixmap(welc.scaled(1260,670,Qt::KeepAspectRatio));
 }
 
 login::~login()
@@ -49,17 +63,21 @@ int login::on_logbut_clicked()
         }
         if (count==1){
             qDebug()<< "Successful login";
-
+             ui->username->clear();
+              ui->password->clear();
             qry.clear();
 
 
             mydb.close();
 
-            ui->stackedWidget->setCurrentIndex(2);
+            ui->stackedWidget->setCurrentIndex(1);
         }
         else if (count<1){
             qDebug()<< "Username and Password does not exist.";
+            ui->username->clear();
+            ui->password->clear();
             ui->textdis->setText("Username and Password not found");
+
             qry.clear();
             mydb.close();
         } else if(count>1){
@@ -118,7 +136,7 @@ int login::on_signbut_clicked()
 
 }else{
              qDebug()<< "Ok";
-            ui->stackedWidget->setCurrentIndex(5);
+            ui->stackedWidget->setCurrentIndex(6);
               query.clear();
                mydb.close();
         }
@@ -184,7 +202,7 @@ mydb.close();
 void login::on_logPeriodbut_clicked()
 {
 
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
 
         mydb = QSqlDatabase::database();
      if(!mydb.open()){
@@ -231,7 +249,7 @@ void login::on_logPeriodbut_clicked()
 
 
                        ui->prediction->setText(x.toString());
-                       ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining"));
+                       ui->predictionMessage->setText(QString::number(minus) );
 
 
 
@@ -282,8 +300,8 @@ void login::on_pred_clicked()
 
 
                                ui->prediction->setText(x.toString());
-                               ui->predictionMessage->setText(QString::number(minus) +" "+QString("Days remaining "));
-                               ui->ovulationmessage->setText("Ovulation On"+nextOvu.toString());
+                               ui->predictionMessage->setText(QString::number(minus));
+                               ui->ovulationmessage->setText(nextOvu.toString());
 
 
                qrr.clear();
@@ -294,13 +312,13 @@ void login::on_pred_clicked()
 
 void login::on_insightbut_clicked()
 {
-     ui->stackedWidget->setCurrentIndex(8);
+     ui->stackedWidget->setCurrentIndex(9);
 }
 
 
 void login::on_signupbut_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 
@@ -318,13 +336,13 @@ void login::on_pushButton_12_clicked()
 
 void login::on_pushButton_13_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
 }
 
 
 void login::on_pushButton_11_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(5);
+    ui->stackedWidget->setCurrentIndex(7);
 }
 
 
@@ -342,7 +360,7 @@ void login::on_pushButton_9_clicked()
 
 void login::on_pushButton_15_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 
@@ -356,6 +374,74 @@ void login::on_pushButton_14_clicked()
 
 void login::on_log_period_2_clicked()
 {
-     ui->stackedWidget->setCurrentIndex(3);
+     ui->stackedWidget->setCurrentIndex(4);
 
 }
+
+
+void login::on_pushButton_clicked()
+{
+    mydb = QSqlDatabase::database();
+    if(!mydb.open()){
+    qDebug()<<"Not connected";
+    }
+         QSqlQuery qrr;
+
+        qDebug()<<id;
+        QString od = QString::number(id);
+         if(qrr.exec("SELECT * FROM periodData WHERE period_Id = '"+od+"' ")){
+            qDebug()<<"noprob";
+            int fieldNo = qrr.record().indexOf("lastPeriod");
+            int fieldNo1 = qrr.record().indexOf("cycleLength");
+
+        while(qrr.next()){
+          now = qrr.value(fieldNo).toString();
+         qDebug()<<now;
+          cycle = qrr.value(fieldNo1).toInt();
+         qDebug()<<cycle;
+         QDate nextP = QDate::fromString(now,"yyyy-MM-dd");
+           qDebug()<<nextP;
+           x=nextP.addDays(cycle);
+
+            QDate curr = QDate::currentDate();
+              minus= curr.daysTo(x);
+
+              int ovuDur = cycle - 13;
+              nextOvu = nextP.addDays(ovuDur);
+              qDebug()<<nextOvu;
+         }
+              }
+
+
+                           ui->prediction->setText(x.toString());
+                           ui->predictionMessage->setText(QString::number(minus));
+                           ui->ovulationmessage->setText(nextOvu.toString());
+
+
+           qrr.clear();
+           mydb.close();
+
+           ui->stackedWidget->setCurrentIndex(3);
+}
+
+
+
+
+
+void login::on_pushButton_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(8);
+}
+
+
+void login::on_pushButton_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+
+void login::on_pushButton_4_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+

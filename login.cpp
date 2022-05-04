@@ -210,8 +210,9 @@ void login::on_logPeriodbut_clicked()
      }
      QSqlQuery q1;
 
-     QDate logperiod = ui->logPeriodbut_2->date();
+     QDate logperiod = ui->calendarWidget_3->selectedDate();
      QString g = logperiod.toString("yyyy-MM-dd");
+
 
      qDebug()<< id;
     q1.prepare("UPDATE periodData SET lastPeriod = :a WHERE period_Id = :asd ");
@@ -443,5 +444,15 @@ void login::on_pushButton_3_clicked()
 void login::on_pushButton_4_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+}
+
+
+void login::on_calendarWidget_3_clicked(const QDate &date)
+{
+
+
+    ui->log_date->setText(ui->calendarWidget_3->selectedDate().toString("dd/MM/yy"));
+
+   mydb.close();
 }
 

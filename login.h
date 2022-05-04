@@ -75,6 +75,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_calendarWidget_3_clicked(const QDate &date);
+
 private:
     Ui::login *ui;
 };

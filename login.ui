@@ -27,7 +27,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="login_screen0">
      <widget class="QLabel" name="textdis">
@@ -161,8 +161,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Log Out</string>
@@ -385,9 +384,9 @@ color: black;</string>
      <widget class="QLabel" name="predictionMessage">
       <property name="geometry">
        <rect>
-        <x>780</x>
+        <x>790</x>
         <y>350</y>
-        <width>191</width>
+        <width>51</width>
         <height>16</height>
        </rect>
       </property>
@@ -444,19 +443,6 @@ color: black;</string>
        <string/>
       </property>
      </widget>
-     <widget class="QDateEdit" name="logPeriodbut_2">
-      <property name="geometry">
-       <rect>
-        <x>750</x>
-        <y>380</y>
-        <width>281</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border:0;</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
@@ -470,11 +456,27 @@ color: black;</string>
        <string>Cancel</string>
       </property>
      </widget>
+     <widget class="QLabel" name="log_date">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>380</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>Click on the calendar to your log period</string>
+      </property>
+     </widget>
      <zorder>lgpimg</zorder>
      <zorder>calendarWidget_3</zorder>
      <zorder>logPeriodbut</zorder>
-     <zorder>logPeriodbut_2</zorder>
      <zorder>pushButton_3</zorder>
+     <zorder>log_date</zorder>
     </widget>
     <widget class="QWidget" name="calendar3">
      <widget class="QPushButton" name="pushButton_10">
@@ -709,90 +711,6 @@ p, li { white-space: pre-wrap; }
      </widget>
     </widget>
     <widget class="QWidget" name="insights">
-     <widget class="QPlainTextEdit" name="plainTextEdit_2">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>190</y>
-        <width>341</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <property name="plainText">
-       <string>कुन समयमा के खाने ,महिनावारीको समयमा भूलेर पनि खानु हुदैन यी ६ चिज
-
-महिनाबारीका समयमा अधिकांश महिलाहरुको महिनावारीको गडवडी र महिनावारीको समयमा हुने अस्वस्थ्ता  प्रमुख समस्या हो । तर धेरै महिलाहरुलाई थाहा नहुन सक्छ कि महिनावारीको अनियमितता , दुखाई, थकान, चिडचिडापन आदि हुनुमा हामीले खाने खानेकुराको पनि भूमिका हुन्छ । त्यसैले महिनावारीको समयमा तपाइको शरिरलाई हानी गर्ने यी खानेकुराबाट जोगिनुस र हरेक महिना झेल्दै आउनु भएको समस्याबाट केही मात्रामा भएपनि पार पाउनुहोस । त्यसका लागि यी खानेकुराहरु महिनावारीको समयमा भूलेर पनि नखानुस ।
-१) कफी स् महिनावारी नियमित नहुने समस्या छ भने कफि नपिउनु राम्रो हुन्छ ।कफिले महिनावारीको नियमित चक्रमा प्रभाव पार्छ । कफिमा पाइने क्याफिन यसको कारक तत्व हो ।
-
-२) बोसो युक्त मासुहरु स् महिनावारीको समयमा पोल्ने, चिडचिडापन महसुस हुने समस्या छ भने मासु खाँदै नखानु राम्रो हुन्छ । मासु खानै पर्ने अवस्थामा कम बोसो भएका वा माछा जन्य खानेकुरा खानु उपयुक्त हुन्छ ।
-
-३) प्याकिङ गरिएका खानेकुरा स् महिनावारी भएको समयमा बजारमा पाइने प्याकिङ गरिएका खानेकुरा जस्तै केक, पाउरोटी, क्रिम रोल आदि नखादा स्वास्थ्यलाई फाइदा पुग्छ । यी खानेकुराको सट्टामा फाइबरको मात्र बढी भएको रोटि खाने गर्नु उत्तम हुन्छ ।
-
-४। चिनीजन्य खानेकुरा स् महिनावारीको समयमा केक कुकिज क्यान्डी जस्ता चिनीजन्य खानेकुरा कम खानु पर्छ। गुलियो पदार्थ नै खाने इच्छा भयो भने फलफूल खानु उपयुक्त हुन्छ । चिनीको मात्र बढी भएका खानेकुराले महिनावारी चक्रमा समेत प्रभाव पर्ने गर्छ । दुखाई बढ्नुका साथै, लामो समय पिडा दिन सक्ने हुन्छ ।
-
-५) आइसक्रिम स् क्रिम र चिज डेरी उत्पादन सबैलाई मन पर्छ । मन पर्ने कुरा छोड्ने चाहना कसलाई हुन्छ र आइसक्रिम, क्रिम र चिज जस्ता डेरी उत्पादनमा हुने चिल्लो पदार्थ महिनावारीको समयमा खादै नखानु वा कम खानु राम्रो हुन्छ। अधिक मात्रामा चिनी पाइने खानेकुरा फाइदाजनक नहुन सक्छन।
-
-६) प्रशोधन गरिएका खानेकुराहरु स् सजिलो र सुविधाजनक भएता पनि महिनावारीका समयमा स्वादकै निम्ति भनेर प्याकेटमा राखिएका प्रोशोधित खानेकुरा जस्तै चिप्स, चीजबल्स आदि खानु उपयुक्त हुँदैन ।यस्ता खानेकुरा मध्ये पनि अधिकमात्रामा नुनको प्रयोग भएको छ भने त्यसबाट टाढा रहनुहोस । साथै सोडियमको मात्रा बढी भएको खाना पनि महिनावारीको समयमा कम खानु उपयुक्त हुन्छ ।</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
-      <property name="geometry">
-       <rect>
-        <x>780</x>
-        <y>188</y>
-        <width>341</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <property name="plainText">
-       <string>Everything You Need to Know About Period Cramps
-
-Period cramps, known in the medical world as “dysmenorrhea,” are a very common and normal part of the monthly cycle. Though the experience has been around for as long as humans have, the word “dysmenorrhea” was first used in 1810, created using New Latin word parts that basically mean “difficult menstrual flow.” It’s estimated more than half of us experience period pain for one or two days each month.
-
-It’s important to understand that menstrual pain exists on a scale and varies significantly from person to person. Some don’t experience any period pain at all, for others it’s light cramping, but for around 10 percent it’s so severe that it gets in the way of everyday life. 
-
-Let’s dive into what causes period cramps and how best to relieve them. 
-
-</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_3">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>190</y>
-        <width>341</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <property name="plainText">
-       <string>महिनावारी भएका बेला के कुरामा ध्यान दिने?
-
-महिलाहरु किशोरवास्थामा प्रवेश भएदेखि गर्भधारण नभएसम्म हरेक महिना योनीबाट रगत बग्छ। यस्तो रगत २ देखि ७ दिनसम्म बग्छ र आफैँ बन्द हुन्छ। महिनामा एकपटक रगत बग्ने भएकाले यसलाई महिनावारी भनिएको हो।
-
-samyak inside small
-यसलाई रजस्वला, पर सर्नु, नछुने हुनु आदि पनि भनिन्छ। म्हिनावरी चक्र व्यक्तिअनुसार २१ देखि ३५ दिनको हुने गर्छ। डिम्बासयको डिम्ब(अण्डा) परिपक्व भएपछि केटीहरुको पहिलो महिनावारी हुन्छ। महिनावारी सामन्यतया ८ देखि १९ वर्षको उमेरमा सुरु भइ ४५ देखि ५५ वर्षको उमेरसम्म हुन्छ। 
-
-महिनावारी सुरु भएपछि एक प्रकारको सेतो पानी योनीबाट बग्न सक्छ। यो समान्य हो तर यो गन्हाउने वा योनी वरिपरि चिलाउने वा पोल्ने भयो भने यसको उपचार गर्नुपर्छ। महिनावरी हुँदा यौनांगको सरसफाइ राम्रोसँग भएन भने यस्तो समस्या हुने गर्दछ। 
-
-महिनावरी प्राकृतिक र स्वाभाविक प्रक्रिया हो र स्वस्थ्य अवस्थाको पनि चिन्ह हो तर यसको बारेमा सही जानकारी नहुँदा पहिलो पटक महिनावारी हुँदा  धेरै किशोरीहरु आत्तिने गर्छन् र केहीले रोग लाग्यो भनेर सोच्छन्। तसर्थ घरमा भएका अभिभावकहरुले यसबारे जानकारी दिनुपर्छ।  
-
-महिनावारी भएको बेला ध्यान दिनुपर्ने कुराहरु 
-महिनावारी हुँदा व्यक्तिगत सरसफाइमा ध्यान दिनुपर्ने हुन्छ। सरसफाइमा ध्यान दिइएन भने गन्हाउने सेतो पानी बग्ने, योनी चिलाउने, पिसाब पोल्ने तथा संक्रमण हुन सक्छ। सफाइको कमीले यौनांगमा घाउ भई हिँड्न गाह्रो हुन्छ। यौनांग सफा पानीले धुुनुपर्छ। रगत लागेको छ भने मनतातो पानीले धुुनुपर्छ। यो बेलामा पानीमा फिट्किरी हालेर पनि यौनांग सफा गर्न सकिन्छ। नुहाएर सफा बन्नुपर्छ।
-
-महिनावारी भएको बेला शरीरबाट रगत बग्छ। शरीर कमजोर महशुस हुन्छ। शरीरलाई बलियो बनाउन पौष्टिक खाना, सागसब्जी, तरकारी, फलफूल दुध, दही, गेडागुडी, प्रशस्त मात्रामा खानुपर्छ। टुसा उमारेको गेडागुडी, चाकु, फलामको भाँडामा पकाएको दाल गहत आदिको प्रयोगले शरीर स्वस्थ्य बनाउँछ ।यसले रक्त अल्पताबाट पनि बचाउँछ। 
-
-महिनावारी हुँदा नरम सुतीको कपडाको टुक्रा वा स्यानेटेरी प्याड प्रयोग गरेर सजिलै र सफासँग व्यवस्थापन गर्न सकिन्छ। त्यसबाहेक अहिले मेन्सट्रुयल कप र टेम्पोन पनि बजारमा पाइन्छन्। महिनावारी हँदा कसैकसैलाई तल्लो पेट दुख्ने, स्तन दुख्ने, ढाड दुख्ने,हात खुट्टा करकर खाने, कसैलाई बेचैन, तनाव हुने , टाउको दुख्ने पनि हुन्छ।
-
-सामान्य अवस्थामा ४ देखि ७ दिनसम्म रगत बग्नु समान्य हो तर कसैलाई १० देखि १५ दिनसम्म रगत बगिरहने भयो भने उपचार गराउनु पर्छ। यदि हरेक २– २ घण्टामा प्याड फेर्नु पर्ने अवस्था आयो भने त्यसलाई धेरै रगत बगेको मानिन्छ। त्यस्तो भएमा के गर्ने त?
-
-तल्लो पेटमा हलुका मालिस गर्ने ।
-तातो पानी राखेको रबरको थैला वा बोतलमा पानी राखेर सेक्ने
-दुध, दही, फलफूल, सागपात, गेडागुडीको झोल खाने।
-
-</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="insimg">
       <property name="geometry">
        <rect>
@@ -893,7 +811,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;महिलाहरु किशोरवास्थामा प्रवेश भएदेखि गर्भधारण नभएसम्म हरेक महिना योनीबाट रगत बग्छ। यस्तो रगत २ देखि ७ दिनसम्म बग्छ र आफैँ बन्द हुन्छ। महिनामा एकपटक रगत बग्ने भएकाले यसलाई महिनावारी भनिएको हो।&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;samyak inside small&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;यसलाई रजस्वला, पर सर्नु, नछुने हुनु आदि पनि भनिन्छ। म्हिनावरी चक्र व्यक्तिअनुसार २१ देखि ३५ दिनको हुने गर्छ। डिम्बासयको डिम्ब(अण्डा) परिपक्व भएपछि केटीहरुको पहिलो महिनावारी हुन्छ। महिनावारी सामन्यतया ८ देखि १९ वर्षको उमेरमा सुरु भइ ४५ देखि ५५ वर्षको उमेरसम्म हुन्छ। &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;महिनावारी सुरु भएपछि एक प्रकारको सेतो पानी योनीबाट बग्न सक्छ। यो समान्य हो तर यो गन्हाउने वा योनी वरिपरि चिलाउने वा पोल्ने भयो भने यसको उपचार गर्नुपर्छ। महिनावरी हुँदा यौनांगको सरसफाइ राम्रोसँग भएन भने यस्तो समस्या हुने गर्दछ। &lt;/span&gt;&lt;/p&gt;
@@ -954,18 +871,6 @@ p, li { white-space: pre-wrap; }
        <string>Back</string>
       </property>
      </widget>
-     <zorder>insimg</zorder>
-     <zorder>plainTextEdit_2</zorder>
-     <zorder>plainTextEdit</zorder>
-     <zorder>plainTextEdit_3</zorder>
-     <zorder>horizontalSpacer</zorder>
-     <zorder>horizontalSpacer_2</zorder>
-     <zorder>horizontalSpacer_3</zorder>
-     <zorder>label</zorder>
-     <zorder>scrollArea</zorder>
-     <zorder>textBrowser_4</zorder>
-     <zorder>textBrowser_5</zorder>
-     <zorder>pushButton_4</zorder>
     </widget>
    </widget>
   </widget>
